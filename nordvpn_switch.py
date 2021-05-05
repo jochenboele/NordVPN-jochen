@@ -93,7 +93,7 @@ def get_nordvpn_servers():
 def initialize_VPN(stored_settings=0,save=0,area_input=None,skip_settings=0):
 
     ###load stored settings if needed and set input_needed variables to zero if settings are provided###
-    windows_pause = 3
+    windows_pause = 1
     additional_settings_needed = 1
     additional_settings_list = list()
     if stored_settings == 1:
@@ -102,7 +102,7 @@ def initialize_VPN(stored_settings=0,save=0,area_input=None,skip_settings=0):
         input_needed = 0
     elif area_input is not None:
         input_needed = 2
-        windows_pause = 8
+        windows_pause = 2
     else:
         input_needed = 1
 
@@ -443,7 +443,7 @@ def rotate_VPN(instructions=None,google_check = 0):
             current_ip = new_ip = get_ip()
         except urllib.error.URLError:
             print("Can't fetch current ip. Retrying...")
-            time.sleep(10)
+            time.sleep(1)
             continue
         else:
             print("\nYour current ip-address is:", current_ip)
@@ -473,18 +473,18 @@ def rotate_VPN(instructions=None,google_check = 0):
                 print("Found a server! You're now on "+re.search('(?<=You are connected to )(.*)(?=\()', str(new_connection))[0].strip())
         except:
             print("\n An unknown error occurred while connecting to a different server! Retrying with a different server...\n")
-            time.sleep(15)
+            time.sleep(1)
             continue
 
         for i in range(12):
             try:
                 new_ip = get_ip()
             except:
-                time.sleep(5)
+                time.sleep(1)
                 continue
             else:
                 if new_ip in [current_ip,og_ip]:
-                    time.sleep(5)
+                    time.sleep(2)
                     continue
                 else:
                     break
