@@ -493,7 +493,7 @@ def rotate_VPN(instructions=None,google_check = 0):
 
         if new_ip in [current_ip,og_ip]:
             print("ip-address hasn't changed. Retrying...\n")
-            time.sleep(10)
+            time.sleep(1)
             continue
         else:
             print("your new ip-address is:", new_ip)
